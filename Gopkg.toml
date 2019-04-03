@@ -1,0 +1,36 @@
+[[constraint]]
+  name = "github.com/gorilla/pat"
+  version = "1.0.0"
+
+[[constraint]]
+  name = "github.com/tkanos/gonfig"
+  version = "1.0.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
+
+[[constraint]]
+  name = "github.com/rakyll/statik"
+  version = "0.1.6"
+
+[[constraint]]
+  name = "github.com/gorilla/mux"
+  version = "1.7.0"
+
+[[constraint]]
+  name = "github.com/rs/cors"
+  version = "1.6.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/kataras/golog"
+
+[[constraint]]
+  name = "github.com/sirupsen/logrus"
+  version = "1.4.0"
+
+[metadata.heroku]
+  root-package = "github.com/heroku/go-getting-started"
+  go-version = "1.12.1"
+  install = [ "./..." ]
