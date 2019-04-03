@@ -5,4 +5,4 @@ build:
     - go
 
 run:
-  web: transhipment-problem-api
+  web: transportation

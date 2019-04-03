@@ -1,1 +1,1 @@
-web: bin/transhipment-problem-api
+web: bin/transportation
