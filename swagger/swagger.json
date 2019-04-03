@@ -8,7 +8,7 @@
       "email": "germanfilipp@gmail.ccom"
     }
   },
-  "host": "localhost:8080",
+  "host": "transhipment-problem-api.herokuapp.com",
   "basePath": "",
   "tags": [
     {
@@ -47,8 +47,17 @@
           }
         ],
         "responses": {
-          "405": {
-            "description": "Invalid input"
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Interval Server Error"
           }
         }
       }
