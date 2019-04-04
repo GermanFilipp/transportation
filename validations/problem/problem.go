@@ -18,6 +18,12 @@ type ParamsError struct {
 	FieldName map[string]string `json:"error"`
 }
 
+//NewError initialize new error
+func NewError(message string) *ParamsError {
+	err := ParamsError{map[string]string{"error": message}}
+	return &err
+}
+
 //IsValidParams should validate fields
 func IsValidParams(params Params) (ParamsError, bool) {
 	pErr := ParamsError{map[string]string{}}
@@ -26,6 +32,10 @@ func IsValidParams(params Params) (ParamsError, bool) {
 		return pErr, false
 	}
 	pErr.validateCosts(params)
+	if len(pErr.FieldName) != 0 {
+		return pErr, false
+	}
+	pErr.validateNegative(params)
 	if len(pErr.FieldName) != 0 {
 		return pErr, false
 	}
@@ -60,6 +70,27 @@ func (pE *ParamsError) validateCosts(params Params) {
 	for _, cRow := range params.GetCosts() {
 		if len(cRow) != len(params.GetDemand()) {
 			pE.FieldName["costs"] = "length of costs columns should be equal to demand"
+		}
+	}
+}
+
+func (pE *ParamsError) validateNegative(params Params) {
+	for _, val := range params.GetSupply() {
+		if val < 0 {
+			pE.FieldName["supply"] = "supply cannot include negative values"
+		}
+	}
+	for _, val := range params.GetDemand() {
+		if val < 0 {
+			pE.FieldName["demand"] = "demand cannot include negative values"
+		}
+	}
+
+	for _, cost := range params.GetCosts() {
+		for _, val := range cost {
+			if val < 0 {
+				pE.FieldName["costs"] = "costs cannot include negative values"
+			}
 		}
 	}
 }

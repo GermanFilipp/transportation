@@ -30,6 +30,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	defer func() {
 		if r := recover(); r != nil {
 			logger.Fatal(w, "Interval Server Error", http.StatusInternalServerError)
+			http.Error(w, string(validation.NewError("Internal Server Error").AsJSON()), http.StatusInternalServerError)
 		}
 	}()
 
@@ -38,7 +39,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	logger.Info("params", p)
 	if jsonErr != nil {
 		logger.Error("invalid params", p)
-		http.Error(w, "Unprocessable Entity", http.StatusUnprocessableEntity)
+		http.Error(w, string(validation.NewError("Can't parse params").AsJSON()), http.StatusUnprocessableEntity)
 	} else {
 		validation, isValidParams := validation.IsValidParams(p)
 		if isValidParams {
