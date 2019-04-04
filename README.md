@@ -1,5 +1,5 @@
 # Transportation Problem Solver
-Initial basic feasible solution by Method: Vogel's approximation method
+Initial basic feasible solution by: Vogel's approximation method
 
 
 Optimality test: Potential method
