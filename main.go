@@ -11,9 +11,7 @@ import (
 )
 
 func main() {
-	// conf := config.GetEnv()
 	port := os.Getenv("PORT")
-
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
@@ -23,7 +21,6 @@ func main() {
 }
 
 func logRequest(handler http.Handler) http.Handler {
-	// logger.NewLogger()
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		logger.Info(r.RemoteAddr, r.Method, r.URL)
 		handler.ServeHTTP(w, r)

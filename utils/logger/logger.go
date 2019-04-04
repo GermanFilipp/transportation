@@ -23,14 +23,16 @@ func init() {
 func Info(v ...interface{}) {
 	file := getFile()
 	defer file.Close()
+	logrus.Info(v...) // log to os.Stdout
 	Log.Out = file
-	Log.Info(v...)
+	Log.Info(v...) // log to file
 }
 
 //Warn log in stdout and file
 func Warn(v ...interface{}) {
 	file := getFile()
 	defer file.Close()
+	logrus.Warn(v...)
 	Log.Out = file
 	Log.Warn(v...)
 }
@@ -39,6 +41,7 @@ func Warn(v ...interface{}) {
 func Error(v ...interface{}) {
 	file := getFile()
 	defer file.Close()
+	logrus.Error(v...)
 	Log.Out = file
 	Log.Error(v...)
 }
@@ -47,6 +50,7 @@ func Error(v ...interface{}) {
 func Fatal(v ...interface{}) {
 	file := getFile()
 	defer file.Close()
+	logrus.Fatal(v...)
 	Log.Out = file
 	Log.Fatal(v...)
 }
