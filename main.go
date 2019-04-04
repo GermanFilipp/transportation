@@ -3,22 +3,18 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 
+	"github.com/germanfilipp/transportation/config"
 	"github.com/germanfilipp/transportation/routes"
 	"github.com/germanfilipp/transportation/utils/logger"
 	"github.com/rs/cors"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		logger.Fatal("$PORT must be set")
-	}
-	port = ":" + port
+	conf := config.GetEnv()
 	router := routes.GetRouter()
 	handler := cors.Default().Handler(router)
-	log.Fatal(http.ListenAndServe(port, logRequest(handler)))
+	log.Fatal(http.ListenAndServe(conf.Port, logRequest(handler)))
 }
 
 func logRequest(handler http.Handler) http.Handler {

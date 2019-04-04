@@ -13,7 +13,7 @@ const (
 	rootPath      = "/"
 )
 
-//GetRouter return routes
+//GetRouter return pat instance with handlers
 func GetRouter() *pat.Router {
 	router := pat.New()
 	router.Post(transportPath, transportation.Create)

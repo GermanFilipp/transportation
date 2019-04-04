@@ -63,7 +63,6 @@ func envName() string {
 	return env
 }
 
-//GetFile return File
 func getFile() *os.File {
 	p, _ := os.Getwd()
 	currentPath := p + logpath

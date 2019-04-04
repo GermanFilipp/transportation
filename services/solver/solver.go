@@ -9,7 +9,7 @@ import (
 	"github.com/germanfilipp/transportation/utils/logger"
 )
 
-//Shipment should
+//Shipment struct for storing matrix calculations
 type shipment struct {
 	quantity, costPerUnit     float64
 	indexInRow, indexinColumn int
@@ -17,7 +17,7 @@ type shipment struct {
 
 var shipZero = shipment{}
 
-//TransportTable save
+//TransportTable main struct for storing values of Transport Problem
 type TransportTable struct {
 	supply, demand, origSup, origDem []int
 	supplyLen, demandLen             int
@@ -30,15 +30,6 @@ type potential struct {
 	value       int
 	isAvailable bool
 	i, j        int
-}
-
-//ResponseJSON json metadatas
-type ResponseJSON struct {
-	TotalCost int         `json:"totalCost"`
-	Result    [][]int     `json:"result"`
-	Supply    []int       `json:"supply"`
-	Demand    []int       `json:"demand"`
-	Costs     [][]float64 `json:"costs"`
 }
 
 //NewTransportTable initialize new TransportTable struct and made balancing validations
@@ -75,7 +66,8 @@ func initMatrix(lSup, lDem int) [][]shipment {
 	return matrix
 }
 
-//SolveByPotentialsMethod should
+//SolveByPotentialsMethod should validate and fix degeneracy solution
+//second step to find solution
 func (t *TransportTable) SolveByPotentialsMethod() {
 	if t.isDegeneracySolution() {
 		logger.Warn("Degeneracy solution ", string(t.ResultToJSON()))
@@ -154,7 +146,6 @@ func (t *TransportTable) searchCandidate() potential {
 	return potential{}
 }
 
-//PotentialMethod should
 func (t *TransportTable) potentialMethod() ([]potential, []potential) {
 	u, v := make([]potential, t.supplyLen), make([]potential, t.demandLen)
 	fb := t.firstBasis()

@@ -24,7 +24,7 @@ func NewError(message string) *ParamsError {
 	return &err
 }
 
-//IsValidParams should validate fields
+//IsValidParams validate params
 func IsValidParams(params Params) (ParamsError, bool) {
 	pErr := ParamsError{map[string]string{}}
 	pErr.validateEmpty(params)

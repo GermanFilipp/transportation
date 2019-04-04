@@ -11,7 +11,7 @@ import (
 
 var fsW, fsErr = fs.New()
 
-// GetFiles return handler
+// GetFiles return handler with fileserver
 func GetFiles(path string) http.Handler {
 	if fsErr != nil {
 		log.Fatal(fsErr)

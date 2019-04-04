@@ -6,7 +6,16 @@ import (
 	"github.com/germanfilipp/transportation/utils/logger"
 )
 
-//ResultToJSON should
+//ResponseJSON json metadata
+type ResponseJSON struct {
+	TotalCost int         `json:"totalCost"`
+	Result    [][]int     `json:"result"`
+	Supply    []int       `json:"supply"`
+	Demand    []int       `json:"demand"`
+	Costs     [][]float64 `json:"costs"`
+}
+
+//ResultToJSON return json with solution results
 func (t *TransportTable) ResultToJSON() []byte {
 	var totalCosts float64
 	var matrix [][]int

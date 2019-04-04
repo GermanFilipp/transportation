@@ -8,7 +8,7 @@ func TotalSum(array []int) (ts int) {
 	return
 }
 
-//CopyArray return copy of receiving array
+//CopyArray return copy of received array
 func CopyArray(arr []int) []int {
 	tmp := []int{}
 	for _, v := range arr {

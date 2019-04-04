@@ -19,9 +19,15 @@ type Configuration struct {
 //GetEnv return Configuration with env variables
 func GetEnv() Configuration {
 	configuration := Configuration{}
-	err := gonfig.GetConf(getFileName(), &configuration)
-	if err != nil {
-		panic(err)
+	if os.Getenv("ENV") != "production" {
+		err := gonfig.GetConf(getFileName(), &configuration)
+		if err != nil {
+			panic(err)
+		}
+	}
+	port := os.Getenv("PORT")
+	if port != "" {
+		configuration.Port = ":" + port
 	}
 	return configuration
 }

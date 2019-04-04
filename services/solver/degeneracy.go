@@ -2,7 +2,7 @@ package solver
 
 import "math"
 
-//isDegeneracySolution check if solution degenerat
+//isDegeneracySolution check if solution degenerate
 func (t *TransportTable) isDegeneracySolution() bool {
 	var counter int
 	for _, mx := range t.matrix {

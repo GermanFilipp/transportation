@@ -11,7 +11,7 @@ type minDiff struct {
 	diff, minNum, col, row int
 }
 
-//VogelApproximation algoritm should find first rude results for problem
+//VogelApproximation algoritm should find first rude results for solving problem
 func (t *TransportTable) VogelApproximation() {
 	totalSupply := utils.TotalSum(t.supply)
 	for totalSupply > 0 {
