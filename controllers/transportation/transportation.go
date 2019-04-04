@@ -57,7 +57,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 
 func solve(p ProblemParams) []byte {
 	logger.Info("Start calculation")
-	tT := solver.NewTransporTable(p.Supply, p.Demand, p.Costs)
+	tT := solver.NewTransportTable(p.Supply, p.Demand, p.Costs)
 	logger.Info("Start Vogel Approximation")
 	tT.VogelApproximation()
 	logger.Info("Start Calculate Potentials")

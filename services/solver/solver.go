@@ -41,8 +41,8 @@ type ResponseJSON struct {
 	Costs     [][]float64 `json:"costs"`
 }
 
-//NewTransporTable initialize new TransportTable struct and made balancing validations
-func NewTransporTable(supply, demand []int, costs [][]float64) TransportTable {
+//NewTransportTable initialize new TransportTable struct and made balancing validations
+func NewTransportTable(supply, demand []int, costs [][]float64) TransportTable {
 	if diff := utils.TotalSum(supply) - utils.TotalSum(demand); diff > 0 {
 		demand = append(demand, diff)
 		for i, v := range costs {

@@ -13,11 +13,12 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		logger.Fatal("$PORT must be set")
 	}
+	port = ":" + port
 	router := routes.GetRouter()
 	handler := cors.Default().Handler(router)
-	log.Fatal(http.ListenAndServe(":"+port, logRequest(handler)))
+	log.Fatal(http.ListenAndServe(port, logRequest(handler)))
 }
 
 func logRequest(handler http.Handler) http.Handler {

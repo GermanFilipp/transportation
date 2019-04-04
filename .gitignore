@@ -2,4 +2,6 @@
 .docker_build/
 bin/
 tmp/
+tmp
 _swagger/
+coverage.out

@@ -177,30 +177,6 @@ var vogelTestCases = []solverTest{
 			columnsDone: []bool{true, true, true, true, true, true},
 		},
 	},
-	// TODO: Add this cases
-	// {
-	// 	input: solverInput{
-	// 		demand: []int{16, 18, 30, 25},
-	// 		supply: []int{19, 37, 34},
-	// 		costs: [][]float64{
-	// 			{5, 3, 6, 2},
-	// 			{4, 7, 9, 1},
-	// 			{3, 4, 7, 5},
-	// 		},
-	// 	},
-	// },
-	// {
-	// 	input: solverInput{
-	// 		demand: []int{17, 18, 30, 25},
-	// 		supply: []int{18, 37, 34},
-	// 		costs: [][]float64{
-	// 			{5, 3, 6, 2},
-	// 			{4, 7, 9, 1},
-	// 			{3, 4, 7, 5},
-	// 		},
-	// 	},
-	// },
-
 }
 
 var potentialTestCases = []solverTest{
